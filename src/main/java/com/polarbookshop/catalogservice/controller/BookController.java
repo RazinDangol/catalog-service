@@ -3,6 +3,7 @@ package com.polarbookshop.catalogservice.controller;
 import com.polarbookshop.catalogservice.domain.Book;
 import com.polarbookshop.catalogservice.service.BookService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -25,6 +26,7 @@ public class BookController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Book addBooktoCatalog(@Valid @RequestBody Book book){
         return bookService.addBookToCatalog(book);
     }
