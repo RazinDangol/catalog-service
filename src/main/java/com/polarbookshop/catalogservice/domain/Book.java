@@ -7,6 +7,8 @@ import jakarta.validation.constraints.Positive;
 import lombok.Builder;
 import lombok.ToString;
 
+import java.util.Properties;
+
 @Builder
 @ToString
 public class Book {
