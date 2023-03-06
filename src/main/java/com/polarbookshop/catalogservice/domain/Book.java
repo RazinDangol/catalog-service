@@ -5,8 +5,10 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
 import lombok.Builder;
+import lombok.ToString;
 
 @Builder
+@ToString
 public class Book {
     @NotBlank(message = "The book ISBN must be defined.")
     @Pattern(
