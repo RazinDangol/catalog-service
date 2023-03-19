@@ -41,9 +41,11 @@ public class BookServiceImpl implements BookService{
         return bookRepository.findByIsbn(isbn)
                 .map(existingBook->{
                     Book bookToUpdate = Book.builder()
+                            .id(existingBook.getId())
                             .author(existingBook.getAuthor())
                             .isbn(existingBook.getIsbn())
-                            .price(existingBook.getPrice()).build();
+                            .price(existingBook.getPrice())
+                            .version(existingBook.getVersion()).build();
                 return bookRepository.save(bookToUpdate);
                 })
                 .orElseGet(()->addBookToCatalog(book));

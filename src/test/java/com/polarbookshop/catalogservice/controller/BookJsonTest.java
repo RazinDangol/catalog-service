@@ -14,7 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @JsonTest
-@ContextConfiguration(classes={AppConfig.class})
+
 @EnableConfigurationProperties(value= PolarProperties.class)
 public class BookJsonTest {
     @Autowired

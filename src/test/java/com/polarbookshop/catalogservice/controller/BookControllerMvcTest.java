@@ -17,7 +17,7 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(BookController.class)
-@ContextConfiguration(classes={AppConfig.class})
+
 @EnableConfigurationProperties(value= PolarProperties.class)
 class BookControllerMvcTest {
     @Autowired

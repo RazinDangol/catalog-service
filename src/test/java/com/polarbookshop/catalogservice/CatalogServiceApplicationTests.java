@@ -1,4 +1,4 @@
-package com.polarbookshop.catalogservice.app;
+package com.polarbookshop.catalogservice;
 
 import com.polarbookshop.catalogservice.domain.Book;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,9 @@ class CatalogServiceApplicationTests {
 	@Test
 	void whenPostRequestThenBookCreated(){
 		Book expectedBook = Book.builder()
-				.isbn("1234567890")
+				.version(1)
+				.id(1L)
+				.isbn("1234569990")
 				.author("Author")
 				.price(9.09)
 				.title("Title").build();
