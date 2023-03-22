@@ -1,6 +1,5 @@
 package com.polarbookshop.catalogservice.controller;
 
-import com.polarbookshop.catalogservice.app.AppConfig;
 import com.polarbookshop.catalogservice.config.PolarProperties;
 import com.polarbookshop.catalogservice.domain.Book;
 import org.junit.jupiter.api.Test;
@@ -9,12 +8,11 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.boot.test.json.JsonContent;
-import org.springframework.test.context.ContextConfiguration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @JsonTest
-@ContextConfiguration(classes={AppConfig.class})
+
 @EnableConfigurationProperties(value= PolarProperties.class)
 public class BookJsonTest {
     @Autowired

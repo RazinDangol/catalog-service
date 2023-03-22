@@ -38,12 +38,15 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public Book editBookDetails(String isbn, Book book) {
-        return bookRepository.findByIsbn(isbn)
+        System.out.println(this.bookRepository.findByIsbn(isbn));
+        return this.bookRepository.findByIsbn(isbn)
                 .map(existingBook->{
                     Book bookToUpdate = Book.builder()
-                            .author(existingBook.getAuthor())
+                            .id(existingBook.getId())
+                            .author(book.getAuthor())
                             .isbn(existingBook.getIsbn())
-                            .price(existingBook.getPrice()).build();
+                            .price(book.getPrice())
+                            .version(existingBook.getVersion()).build();
                 return bookRepository.save(bookToUpdate);
                 })
                 .orElseGet(()->addBookToCatalog(book));

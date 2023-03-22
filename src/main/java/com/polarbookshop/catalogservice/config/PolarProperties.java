@@ -1,7 +1,6 @@
 package com.polarbookshop.catalogservice.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @ConfigurationProperties(prefix="polar")
 public class PolarProperties {
