@@ -2,6 +2,7 @@ package com.polarbookshop.catalogservice.repository;
 
 import com.polarbookshop.catalogservice.config.DataConfig;
 import com.polarbookshop.catalogservice.domain.Book;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
@@ -26,6 +27,11 @@ public class BookRepositoryJdbcTests {
     private BookRepository bookRepository;
     @Autowired
     private JdbcAggregateTemplate jdbcAggregateTemplate;
+    @BeforeEach
+    void setup(){
+        this.jdbcAggregateTemplate.deleteAll(Book.class);
+
+    }
 
     @Test
     void findBookbyISBNWhenExisting(){
@@ -69,7 +75,7 @@ public class BookRepositoryJdbcTests {
     @Test
     void findBookbyISBNWhenNotExisting(){
         Optional<Book> actualBook = this.bookRepository.findByIsbn("1234565780");
-        assertThat(actualBook.isEmpty());
+        assertThat(actualBook).isEmpty();
     }
 
     @Test
@@ -95,13 +101,14 @@ public class BookRepositoryJdbcTests {
 
     @Test
     void deleteByIsbn(){
-        String bookIsbn = "1234567890";
+
+        String bookIsbn = "1234567590";
         Book book = Book.builder()
                 .isbn(bookIsbn)
                 .title("title")
                 .author("author")
                 .price(9.90).build();
-        Book persistedBook = jdbcAggregateTemplate.insert(book);
+        Book persistedBook = this.jdbcAggregateTemplate.insert(book);
 
         this.bookRepository.deleteByIsbn(bookIsbn);
         assertThat(jdbcAggregateTemplate.findById(persistedBook.getId(),Book.class)).isNull();
